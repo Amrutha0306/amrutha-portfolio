@@ -1,32 +1,41 @@
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
+const progress = document.getElementById("progress");
+const header = document.getElementById("header");
+const cursorGlow = document.getElementById("cursorGlow");
+const menuBtn = document.getElementById("menuBtn");
+const nav = document.getElementById("nav");
 
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("open");
+window.addEventListener("scroll", () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = `${(window.scrollY / h) * 100}%`;
+  header.classList.toggle("scrolled", window.scrollY > 20);
 });
 
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => navLinks.classList.remove("open"));
+if (window.matchMedia("(pointer:fine)").matches) {
+  window.addEventListener("mousemove", e => {
+    cursorGlow.style.left = `${e.clientX}px`;
+    cursorGlow.style.top = `${e.clientY}px`;
+  });
+}
+
+menuBtn.addEventListener("click", () => {
+  nav.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", nav.classList.contains("open"));
 });
+document.querySelectorAll("#nav a").forEach(a => a.addEventListener("click", () => nav.classList.remove("open")));
 
-document.getElementById("year").textContent = new Date().getFullYear();
-
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("visible");
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12 });
-
+}, {threshold: .12});
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-// Add your real profile URLs here before publishing.
-const profileLinks = {
-  linkedin: "#",
-  github: "#"
-};
-
-document.getElementById("linkedin-link").href = profileLinks.linkedin;
-document.getElementById("github-link").href = profileLinks.github;
+document.querySelectorAll(".tech-float").forEach((card, i) => {
+  card.animate(
+    [{transform:"translateY(0)"},{transform:"translateY(-7px)"},{transform:"translateY(0)"}],
+    {duration:3200 + i*450,iterations:Infinity,easing:"ease-in-out"}
+  );
+});

@@ -1,24 +1,17 @@
-# Amrutha C M — Portfolio
+# Amrutha C M — Portfolio V3
 
-Personal portfolio website for Amrutha C M.
+Premium light editorial-tech portfolio for Amrutha C M.
 
-## Technologies
-- HTML5
-- CSS3
-- JavaScript
-- Git/GitHub
-- GitHub Pages
+## Included
+- Responsive single-page portfolio
+- Visual hero composition
+- Skills/toolkit dashboard
+- Visual project case studies
+- Milestones and education
+- Resume download
+- GitHub and email CTAs
+- Scroll reveal + progress interactions
+- `CNAME` for `amrutha.shop`
 
-## Before publishing
-1. Put the final resume PDF at `assets/Amrutha_CM_Resume.pdf`.
-2. Replace the LinkedIn and GitHub placeholders in `script.js`.
-3. Test all navigation and links locally.
-4. Push the project to GitHub.
-5. Deploy with GitHub Pages.
-6. Connect `amrutha.shop` through BigRock DNS.
-
-## Structure
-- `index.html` — page content
-- `style.css` — design and responsive layout
-- `script.js` — navigation, animation and profile links
-- `assets/` — resume and future assets
+## Deploy
+Push the contents of this folder to the existing `Amrutha0306/amrutha-portfolio` repository. Do not change BigRock DNS or the GitHub Pages custom-domain setting.
